@@ -7,10 +7,10 @@ import java.util.List;
 
 public class Database {
     private static Database instance = null;
-    public List<Customer> customers;
+    final private List<Customer> customers = new ArrayList<Customer>();;
 
     private Database () {
-        customers = new ArrayList<Customer>();
+
     }
 
     public static Database getInstance() {
@@ -18,5 +18,13 @@ public class Database {
             instance = new Database();
         }
         return instance;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void addCustomer(Customer customer){
+        this.customers.add(customer);
     }
 }
