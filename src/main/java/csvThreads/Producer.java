@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 
 public class Producer implements Runnable{
-    private BlockingQueue<String> blockingQueue;
+    private final BlockingQueue<String> blockingQueue;
     protected transient BufferedReader bufferedReader;
 
     @Override
     public void run() {
-        String line=null;
+        String line;
         try {
             while ((line = bufferedReader.readLine()) != null) {
                 blockingQueue.put(line);
@@ -29,8 +29,10 @@ public class Producer implements Runnable{
     public Producer(BlockingQueue<String> blockingQueue) {
         this.blockingQueue = blockingQueue;
         try {
-            bufferedReader = new BufferedReader(new FileReader(
-                            "/Users/andrei-mihaicanuta/IdeaProjects/TraineeProject/src/main/java/csvThreads/mockData.csv"));
+            bufferedReader = new BufferedReader(
+                                new FileReader(
+                                        "/Users/andrei-mihaicanuta/IdeaProjects/" +
+                                    "TraineeProject/src/main/java/csvThreads/mockData.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

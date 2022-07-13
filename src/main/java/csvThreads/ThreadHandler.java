@@ -10,13 +10,13 @@ public class ThreadHandler {
     public void run () {
         BlockingQueue<String> queue = new ArrayBlockingQueue<>(100);
 
-        Producer readingThread = new Producer(queue);
-        new Thread(readingThread).start();
+        Producer readFromCsv = new Producer(queue);
+        new Thread(readFromCsv).start();
 
-        Consumer normalizers = new Consumer(queue);
+        Consumer addToDatabase = new Consumer(queue);
         ExecutorService executor = Executors.newFixedThreadPool(3);
         for (int i = 1; i <= 3; i++) {
-            executor.submit(normalizers);
+            executor.submit(addToDatabase);
         }
         executor.shutdown();
     }
