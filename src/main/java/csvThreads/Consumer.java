@@ -1,9 +1,13 @@
 package csvThreads;
 
+import entity.Customer;
+import entity.CustomerType;
+
 import java.util.concurrent.BlockingQueue;
 
 public class Consumer implements Runnable{
    private BlockingQueue<String> blockingQueue;
+   private final CsvParser csvParser = new CsvParser();
 
     public Consumer(BlockingQueue<String> blockingQueue) {
         this.blockingQueue = blockingQueue;
@@ -17,7 +21,8 @@ public class Consumer implements Runnable{
                     break;
                 }
                 String line = blockingQueue.take();
-                System.out.println(line);
+                Customer customer = csvParser.lineToCustomer(line);
+                System.out.println(customer.toString());
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

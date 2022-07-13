@@ -14,6 +14,7 @@ public class Producer implements Runnable{
     public void run() {
         String line;
         try {
+            line = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
                 blockingQueue.put(line);
             }

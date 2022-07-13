@@ -4,6 +4,7 @@ import entity.CreditData;
 import entity.CustomerId;
 import entity.CustomerType;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Customer {
@@ -13,11 +14,11 @@ public class Customer {
     private String CheckoutCheckCode;
     private CreditData currentCreditData;
     private CustomerType customerType;
-    private Date registrationDate;
+    private LocalDate registrationDate;
 
     public Customer(CustomerId customerId, String name, String VAT,
                     String checkoutCheckCode, CreditData currentCreditData,
-                    CustomerType customerType, Date registrationDate) {
+                    CustomerType customerType, LocalDate registrationDate) {
         this.customerId = customerId;
         this.name = name;
         this.VAT = VAT;
@@ -69,5 +70,18 @@ public class Customer {
 
     public CustomerType getCustomerType() {
         return customerType;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", name='" + name + '\'' +
+                ", VAT='" + VAT + '\'' +
+                ", CheckoutCheckCode='" + CheckoutCheckCode + '\'' +
+                ", currentCreditData=" + currentCreditData +
+                ", customerType=" + customerType +
+                ", registrationDate=" + registrationDate +
+                '}';
     }
 }

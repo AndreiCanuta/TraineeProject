@@ -34,4 +34,13 @@ public class CreditData {
     public void setPeriod(int period) {
         this.period = period;
     }
+
+    @Override
+    public String toString() {
+        return "CreditData{" +
+                "limit=" + limit +
+                ", product=" + product +
+                ", period=" + period +
+                '}';
+    }
 }
