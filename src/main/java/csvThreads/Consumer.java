@@ -1,4 +1,4 @@
-package readers;
+package csvThreads;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -14,8 +14,7 @@ public class Consumer implements Runnable{
         while(true){
             try {
                 String line = blockingQueue.take();
-                // add parsing functions
-
+                System.out.println(line);
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

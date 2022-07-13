@@ -1,10 +1,9 @@
-package readers;
+package csvThreads;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 
 public class Producer implements Runnable{
@@ -30,7 +29,8 @@ public class Producer implements Runnable{
     public Producer(BlockingQueue<String> blockingQueue) {
         this.blockingQueue = blockingQueue;
         try {
-            bufferedReader = new BufferedReader(new FileReader("data/mockData.csv"));
+            bufferedReader = new BufferedReader(new FileReader(
+                            "/Users/andrei-mihaicanuta/IdeaProjects/TraineeProject/src/main/java/csvThreads/mockData.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
