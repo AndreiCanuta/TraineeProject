@@ -19,7 +19,6 @@ public class Consumer implements Runnable {
     public void run() {
         while (true) {
             try {
-
                 String line = blockingQueue.take();
                 customerRepository.addCustomer(lineToCustomer(line));
                 Customer customer = CsvParser.lineToCustomer(line);
