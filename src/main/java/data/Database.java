@@ -3,11 +3,12 @@ package data;
 import entity.Customer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Database {
     private static Database instance = null;
-    private static List<Customer> customers = new ArrayList<Customer>();
+    private static final List<Customer> customers = Collections.synchronizedList(new ArrayList<>());
 
     private Database () {
 
