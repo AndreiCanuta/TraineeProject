@@ -20,9 +20,10 @@ public class Consumer implements Runnable {
         while (true) {
             try {
                 String line = blockingQueue.take();
+                if(line.equals("EOF")) {
+                    break;
+                }
                 customerRepository.addCustomer(lineToCustomer(line));
-                Customer customer = CsvParser.lineToCustomer(line);
-                customerRepository.addCustomer(customer);
 
             } catch (InterruptedException e) {
                 break;
