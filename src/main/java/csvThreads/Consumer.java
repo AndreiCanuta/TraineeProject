@@ -25,7 +25,7 @@ public class Consumer implements Runnable{
                 String line = blockingQueue.take();
                 Customer customer = csvParser.lineToCustomer(line);
                 customerRepository.addCustomer(customer);
-                System.out.println(customer.toString());
+
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

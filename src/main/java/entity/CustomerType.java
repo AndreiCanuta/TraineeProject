@@ -2,6 +2,6 @@ package entity;
 
 public enum CustomerType {
     HORECA,
-    TRADERS,
+    TRADER,
     SCO;
 }
