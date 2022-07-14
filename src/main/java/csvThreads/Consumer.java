@@ -6,8 +6,10 @@ import repository.CustomerRepository;
 
 import java.util.concurrent.BlockingQueue;
 
-public class Consumer implements Runnable{
-    private BlockingQueue<String> blockingQueue;
+import static csvThreads.CsvParser.lineToCustomer;
+
+public class Consumer implements Runnable {
+    private final BlockingQueue<String> blockingQueue;
     private final CustomerRepository customerRepository = new CustomerRepository();
 
     public Consumer(BlockingQueue<String> blockingQueue) {
@@ -16,18 +18,18 @@ public class Consumer implements Runnable{
 
     @Override
     public void run() {
-        while(true){
+        while (true) {
             try {
-                if (blockingQueue.peek() == null) {
-                    break;
-                }
+//                if (blockingQueue.peek() == null) {
+//                    break;
+//                }
                 String line = blockingQueue.take();
-                Customer customer = CsvParser.lineToCustomer(line);
-                customerRepository.addCustomer(customer);
-                System.out.println(customer);
+                customerRepository.addCustomer(lineToCustomer(line));
 
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                break;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

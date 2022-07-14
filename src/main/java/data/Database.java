@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Database {
     private static Database instance = null;
-    final private List<Customer> customers = new ArrayList<Customer>();;
+    private static List<Customer> customers = new ArrayList<Customer>();
 
     private Database () {
 
@@ -25,6 +25,13 @@ public class Database {
     }
 
     public void addCustomer(Customer customer){
-        this.customers.add(customer);
+        customers.add(customer);
+    }
+
+    @Override
+    public String toString() {
+        return "Database{" +
+                "customers=" + customers +
+                '}';
     }
 }
