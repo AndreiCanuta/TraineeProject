@@ -18,9 +18,7 @@ public class Consumer implements Runnable {
     public void run() {
         while (true) {
             try {
-                if (blockingQueue.peek() == null) {
-                    break;
-                }
+
                 String line = blockingQueue.take();
                 customerRepository.addCustomer(lineToCustomer(line));
 

@@ -10,7 +10,10 @@ public class App {
         ThreadHandler threadHandler = new ThreadHandler();
         threadHandler.run();
 
-        Thread.sleep(1000);
+        while (controller.getAllCustomers().size() != 1000) {
+            Thread.sleep(500);
+        }
+
         System.out.println(controller.getAllCustomers().size());
     }
 }
