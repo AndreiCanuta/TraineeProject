@@ -7,9 +7,8 @@ import repository.CustomerRepository;
 import java.util.concurrent.BlockingQueue;
 
 public class Consumer implements Runnable{
-   private BlockingQueue<String> blockingQueue;
-   private final CsvParser csvParser = new CsvParser();
-   private final CustomerRepository customerRepository = new CustomerRepository();
+    private BlockingQueue<String> blockingQueue;
+    private final CustomerRepository customerRepository = new CustomerRepository();
 
     public Consumer(BlockingQueue<String> blockingQueue) {
         this.blockingQueue = blockingQueue;
@@ -23,9 +22,9 @@ public class Consumer implements Runnable{
                     break;
                 }
                 String line = blockingQueue.take();
-                Customer customer = csvParser.lineToCustomer(line);
+                Customer customer = CsvParser.lineToCustomer(line);
                 customerRepository.addCustomer(customer);
-                System.out.println(customer.toString());
+                System.out.println(customer);
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

@@ -5,9 +5,9 @@ import entity.*;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class CsvParser {
+ public class CsvParser {
 
-    public Customer lineToCustomer (String line) {
+    public static Customer lineToCustomer (String line) {
         String[] split = line.split(",");
         String country = split[0];
         String storeNumber = split[1];
