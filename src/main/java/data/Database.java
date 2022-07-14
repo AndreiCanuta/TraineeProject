@@ -22,7 +22,7 @@ public class Database {
     }
 
     public List<Customer> getCustomers() {
-        return customers;
+        return this.customers;
     }
 
     public void addCustomer(Customer customer){

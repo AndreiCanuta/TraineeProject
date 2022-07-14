@@ -1,5 +1,6 @@
 package csvThreads;
 
+import entity.Customer;
 import repository.CustomerRepository;
 
 import java.util.concurrent.BlockingQueue;
@@ -21,6 +22,8 @@ public class Consumer implements Runnable {
 
                 String line = blockingQueue.take();
                 customerRepository.addCustomer(lineToCustomer(line));
+                Customer customer = CsvParser.lineToCustomer(line);
+                customerRepository.addCustomer(customer);
 
             } catch (InterruptedException e) {
                 break;
