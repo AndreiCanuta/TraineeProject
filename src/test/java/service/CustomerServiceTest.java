@@ -30,7 +30,11 @@ public class CustomerServiceTest {
     public void testGetByCustomerIdSuccessful () {
         CustomerId customerId = new CustomerId("2", "6546", "IT");
         assertNotNull(customerService.getByCustomerId(customerId));
+    }
 
-
+    @Test
+    public void testGetByCustomerIdFail () {
+        CustomerId customerId = new CustomerId("1", "6546", "IT");
+        assertNull(customerService.getByCustomerId(customerId));
     }
 }

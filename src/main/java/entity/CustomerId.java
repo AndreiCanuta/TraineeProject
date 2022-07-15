@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.Objects;
+
 public class CustomerId {
     private String storeNumber;
     private String customerNumber;
@@ -42,5 +44,18 @@ public class CustomerId {
                 ", customerNumber='" + customerNumber + '\'' +
                 ", country='" + country + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CustomerId)) return false;
+        CustomerId that = (CustomerId) o;
+        return Objects.equals(storeNumber, that.storeNumber) && Objects.equals(customerNumber, that.customerNumber) && Objects.equals(country, that.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(storeNumber, customerNumber, country);
     }
 }
