@@ -1,7 +1,6 @@
 import controller.CustomerController;
 import csvThreads.ThreadHandler;
 
-import java.util.SortedMap;
 
 public class App {
     public static CustomerController controller = new CustomerController();
