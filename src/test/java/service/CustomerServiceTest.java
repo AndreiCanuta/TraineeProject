@@ -1,6 +1,7 @@
 package service;
 
 import csvThreads.ThreadHandler;
+import entity.CustomerId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +25,12 @@ public class CustomerServiceTest {
         }
     }
 
+
     @Test
-    public void testTest () {
-        assertEquals(1000, 1000);
+    public void testGetByCustomerIdSuccessful () {
+        CustomerId customerId = new CustomerId("2", "6546", "IT");
+        assertNotNull(customerService.getByCustomerId(customerId));
+
+
     }
 }
