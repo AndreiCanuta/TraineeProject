@@ -36,8 +36,7 @@ public class Producer implements Runnable{
         try {
             bufferedReader = new BufferedReader(
                                 new FileReader(
-                                        "/Users/andrei-mihaicanuta/IdeaProjects/" +
-                                    "TraineeProject/src/main/java/csvThreads/mockData.csv"));
+                                        "data/mockData.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

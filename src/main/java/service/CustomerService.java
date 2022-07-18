@@ -5,6 +5,7 @@ import entity.CustomerId;
 import repository.CustomerRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CustomerService {
     private final CustomerRepository customerRepository = new CustomerRepository();
@@ -13,7 +14,4 @@ public class CustomerService {
         return customerRepository.getAllCustomers();
     }
 
-    public Customer getByCustomerId (CustomerId customerId){
-        return customerRepository.getByCustomerId(customerId);
-    }
 }

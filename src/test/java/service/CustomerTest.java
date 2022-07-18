@@ -1,5 +1,6 @@
 package service;
 
+import controller.CustomerController;
 import csvThreads.ThreadHandler;
 import entity.CustomerId;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,12 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CustomerServiceTest {
+public class CustomerTest {
     private static CustomerService customerService;
+    private static CustomerController customerController;
     private static ThreadHandler threadHandler;
 
     @BeforeAll
     static void initializing()  {
+        customerController = new CustomerController();
         customerService = new CustomerService();
         threadHandler = new ThreadHandler();
 
@@ -29,12 +32,12 @@ public class CustomerServiceTest {
     @Test
     public void testGetByCustomerIdSuccessful () {
         CustomerId customerId = new CustomerId("2", "6546", "IT");
-        assertNotNull(customerService.getByCustomerId(customerId));
+        assertNotNull(customerController.getByCustomerId(customerId));
     }
 
     @Test
     public void testGetByCustomerIdFail () {
         CustomerId customerId = new CustomerId("1", "6546", "IT");
-        assertNull(customerService.getByCustomerId(customerId));
+        assertNull(customerController.getByCustomerId(customerId));
     }
 }

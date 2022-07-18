@@ -17,12 +17,4 @@ public class CustomerRepository {
         return database.getCustomers();
     }
 
-    public Customer getByCustomerId (CustomerId customerId) {
-        for (Customer customer : database.getCustomers()) {
-            if (customer.getCustomerId().equals(customerId)) {
-                return customer;
-            }
-        }
-        return null;
-    }
 }
