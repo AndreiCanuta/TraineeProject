@@ -20,7 +20,11 @@ public class CustomerTest {
         customerService = new CustomerService();
         threadHandler = new ThreadHandler();
 
+        long startTime = System.currentTimeMillis();
         threadHandler.run();
+        long endTime = System.currentTimeMillis();
+        System.out.println(endTime - startTime);
+
         try {
             Thread.sleep(1000);
             assertEquals(1000, customerService.getAllCustomers().size());
