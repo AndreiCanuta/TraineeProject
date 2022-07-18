@@ -40,4 +40,16 @@ public class CustomerTest {
         CustomerId customerId = new CustomerId("1", "6546", "IT");
         assertNull(customerController.getByCustomerId(customerId));
     }
+
+    @Test
+    public void testGetGroupByVATSuccessful () {
+        String VAT = new String("RO-000-2");
+        assertNotNull(customerController.getGroupByVAT(VAT));
+    }
+
+    @Test
+    public void testGetGroupByVATUnsuccessful () {
+        String VAT = new String("RO-000-17");
+        assertNotNull(customerController.getGroupByVAT(VAT));
+    }
 }
