@@ -51,7 +51,7 @@ public class CustomerTest {
     @Test
     public void testGetGroupByVATUnsuccessful () {
         String VAT = new String("RO-000-17");
-        assertNotNull(customerController.getGroupByVAT(VAT));
+        assertEquals(customerController.getGroupByVAT(VAT).size(), 0);
     }
 
     @Test
