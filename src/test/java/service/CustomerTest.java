@@ -56,7 +56,7 @@ public class CustomerTest {
 
     @Test
     public void testChangeCheckOutCode () {
-        customerController.changeCheckoutCode();
+        customerController.changeCheckoutCode("DE", "30", "32");
         CustomerId customerId = new CustomerId("1", "9830", "DE");
         Customer customer = customerController.getByCustomerId(customerId);
         assertEquals(customer.getCheckoutCheckCode(), "32");

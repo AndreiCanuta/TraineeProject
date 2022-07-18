@@ -55,11 +55,11 @@ public class CustomerController {
                 .collect(Collectors.toList());
     }
 
-    public void changeCheckoutCode () {
+    public void changeCheckoutCode (String country, String checkoutCheckCodeOld, String checkoutCheckCodeNew) {
         customerService.getAllCustomers()
                 .stream()
-                .filter(c -> c.getCheckoutCheckCode().equals("30") && c.getCustomerId().getCountry().equals("DE"))
-                .forEach(c -> c.setCheckoutCheckCode("32"));
+                .filter(c -> c.getCheckoutCheckCode().equals(checkoutCheckCodeOld) && c.getCustomerId().getCountry().equals(country))
+                .forEach(c -> c.setCheckoutCheckCode(checkoutCheckCodeNew));
     }
 
 }
