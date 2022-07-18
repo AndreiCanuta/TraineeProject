@@ -1,5 +1,5 @@
 country,storeNumber,customerNumber,name,vat,checkoutCheckCode,limit,product,period,customerType,registrationDate
-RO,4,1496,Livepath,RO-000-2,,10200,BANK_TRANSFER,30,TRADER,1995-02-14
+RO,4,"",Livepath,RO-000-2,,10200,BANK_TRANSFER,30,TRADER,1995-02-14
 IT,1,1112,Edgeblab,IT-000-0,,12900,DIRECT_DEBIT,7,HORECA,2007-06-11
 IT,2,6546,Dabfeed,IT-000-0,,40400,BANK_TRANSFER,1,SCO,1988-10-24
 RO,2,7673,Wikizz,RO-000-7,,12700,BANK_TRANSFER,21,SCO,2006-12-26

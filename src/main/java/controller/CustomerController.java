@@ -29,12 +29,10 @@ public class CustomerController {
 
     public List<Customer> getGroupByVAT (String VAT) {
         try {
-            List<Customer> customers = customerService.getAllCustomers()
+            return customerService.getAllCustomers()
                     .stream()
                     .filter(c -> c.getVAT().equals(VAT))
                     .collect(Collectors.toList());
-
-            return customers;
         } catch (IndexOutOfBoundsException e){
             return null;
         }
