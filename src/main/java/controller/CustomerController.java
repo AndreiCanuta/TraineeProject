@@ -5,6 +5,7 @@ import entity.CustomerId;
 import service.CustomerService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CustomerController {
@@ -37,4 +38,16 @@ public class CustomerController {
             return null;
         }
     }
+
+    public void changeCheckoutCode () {
+        try {
+             customerService.getAllCustomers()
+                    .stream()
+                    .filter(c -> c.getCheckoutCheckCode().equals("30") && c.getCustomerId().getCountry().equals("DE"))
+                     .forEach(c -> c.setCheckoutCheckCode("32"));
+        } catch (IndexOutOfBoundsException e){
+            return;
+        }
+    }
+
 }

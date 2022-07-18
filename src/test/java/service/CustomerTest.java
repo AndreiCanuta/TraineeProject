@@ -2,6 +2,7 @@ package service;
 
 import controller.CustomerController;
 import csvThreads.ThreadHandler;
+import entity.Customer;
 import entity.CustomerId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -51,5 +52,13 @@ public class CustomerTest {
     public void testGetGroupByVATUnsuccessful () {
         String VAT = new String("RO-000-17");
         assertNotNull(customerController.getGroupByVAT(VAT));
+    }
+
+    @Test
+    public void testChangeCheckOutCode () {
+        customerController.changeCheckoutCode();
+        CustomerId customerId = new CustomerId("1", "9830", "DE");
+        Customer customer = customerController.getByCustomerId(customerId);
+        assertEquals(customer.getCheckoutCheckCode(), "32");
     }
 }
