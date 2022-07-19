@@ -6,6 +6,7 @@ import entity.Customer;
 import entity.CustomerId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import utils.PropertyReaderUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,21 +17,15 @@ public class CustomerTest {
 
     @BeforeAll
     static void initializing()  {
+        PropertyReaderUtil.readAppProperty();
         customerController = new CustomerController();
         customerService = new CustomerService();
         threadHandler = new ThreadHandler();
 
-        long startTime = System.currentTimeMillis();
+//        System.out.println("KB: " + (double) (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024);
         threadHandler.run();
-        long endTime = System.currentTimeMillis();
-        System.out.println(endTime - startTime);
-
-        try {
-            Thread.sleep(1000);
-            assertEquals(1000, customerService.getAllCustomers().size());
-        } catch (InterruptedException e) {
-            fail("Threads not working");
-        }
+//        System.out.println("KB: " + (double) (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024);
+        assertEquals(1000000, customerService.getAllCustomers().size());
     }
 
 

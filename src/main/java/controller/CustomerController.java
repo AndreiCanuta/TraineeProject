@@ -15,51 +15,27 @@ public class CustomerController {
     }
 
     public Customer getByCustomerId (CustomerId customerId) {
-        try {
-            List<Customer> customers = customerService.getAllCustomers()
-                    .stream()
-                    .filter(c -> c.getCustomerId().equals(customerId))
-                    .collect(Collectors.toList());
+        return customerService.getByCustomerId(customerId);
+    }
 
-            return customers.get(0);
-        } catch (IndexOutOfBoundsException e){
-            return null;
-        }
+    public List<Customer> getCustomerByCountry (String country) {
+        return customerService.getCustomersByCountry(country);
     }
 
     public List<Customer> getGroupByVAT (String VAT) {
-        return customerService.getAllCustomers()
-                .stream()
-                .filter(c -> c.getVAT().equals(VAT))
-                .collect(Collectors.toList());
-    }
-
-    public List<Customer> getCustomersByCountry (String country) {
-        return customerService.getAllCustomers()
-                .stream()
-                .filter(c -> c.getCustomerId().getCountry().equals(country))
-                .collect(Collectors.toList());
+        return customerService.getGroupByVAT(VAT);
     }
 
     public List<Customer> getCustomersByStoreNumber (String storeNumber) {
-        return customerService.getAllCustomers()
-                .stream()
-                .filter(c -> c.getCustomerId().getStoreNumber().equals(storeNumber))
-                .collect(Collectors.toList());
+        return customerService.getCustomersByStoreNumber(storeNumber);
     }
 
     public List<Customer> getCustomersByCustomerNumber (String customerNumber) {
-        return customerService.getAllCustomers()
-                .stream()
-                .filter(c -> c.getCustomerId().getCustomerNumber().equals(customerNumber))
-                .collect(Collectors.toList());
+        return customerService.getCustomersByCustomerNumber(customerNumber);
     }
 
     public void changeCheckoutCode (String country, String checkoutCheckCodeOld, String checkoutCheckCodeNew) {
-        customerService.getAllCustomers()
-                .stream()
-                .filter(c -> c.getCheckoutCheckCode().equals(checkoutCheckCodeOld) && c.getCustomerId().getCountry().equals(country))
-                .forEach(c -> c.setCheckoutCheckCode(checkoutCheckCodeNew));
+        customerService.changeCheckoutCode(country, checkoutCheckCodeOld, checkoutCheckCodeNew);
     }
 
 }

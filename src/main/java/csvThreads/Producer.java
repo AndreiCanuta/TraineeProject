@@ -1,5 +1,7 @@
 package csvThreads;
 
+import config.AppConfig;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -19,7 +21,7 @@ public class Producer implements Runnable{
                 blockingQueue.put(line);
             }
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < AppConfig.getInstance().getNoConsumer(); i++) {
                 blockingQueue.put("EOF");
             }
 
@@ -36,7 +38,7 @@ public class Producer implements Runnable{
         try {
             bufferedReader = new BufferedReader(
                                 new FileReader(
-                                        "data/mockData.csv"));
+                                        "data/mockData_2.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
