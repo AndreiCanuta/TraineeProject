@@ -13,7 +13,7 @@ services:
   postgres:
     container_name: mrc-pg
     image: 'postgres:13.3'
-    ports:
+    ports:pom.xml
       - '5432:5432'
     environment:
       - POSTGRES_PASSWORD=postgres

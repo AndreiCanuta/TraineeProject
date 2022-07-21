@@ -1,9 +1,8 @@
 package service;
 
-import controller.CustomerController;
 import csvThreads.ThreadHandler;
-import entity.Customer;
-import entity.CustomerId;
+import com.trainee.traineeproject.entity.Customer;
+import com.trainee.traineeproject.entity.CustomerId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utils.PropertyReaderUtil;
