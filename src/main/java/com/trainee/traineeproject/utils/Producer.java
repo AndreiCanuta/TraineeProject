@@ -1,11 +1,14 @@
 package com.trainee.traineeproject.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.BlockingQueue;
 
+@Component
 public class Producer implements Runnable{
     private final BlockingQueue<String> blockingQueue;
     protected transient BufferedReader bufferedReader;
@@ -31,14 +34,8 @@ public class Producer implements Runnable{
         }
     }
 
-    public Producer(BlockingQueue<String> blockingQueue) {
+    public Producer(BlockingQueue<String> blockingQueue, BufferedReader bufferedReader) {
         this.blockingQueue = blockingQueue;
-        try {
-            bufferedReader = new BufferedReader(
-                    new FileReader(
-                            "data/mockData.csv"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        this.bufferedReader = bufferedReader;
     }
 }

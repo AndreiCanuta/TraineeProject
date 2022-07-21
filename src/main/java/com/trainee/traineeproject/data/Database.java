@@ -1,11 +1,13 @@
 package com.trainee.traineeproject.data;
 
 import com.trainee.traineeproject.entity.Customer;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class Database {
     private static Database instance = null;
     private static final List<Customer> customers = Collections.synchronizedList(new ArrayList<>());

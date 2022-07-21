@@ -2,12 +2,12 @@ package com.trainee.traineeproject.entity;
 
 public class RequestCustomerCreditData {
     private CustomerId customerId;
-    private CreditData intialCreditData;
+    private CreditData initialCreditData;
     private CreditData newCreditData;
 
-    public RequestCustomerCreditData(CustomerId customerId, CreditData intialCreditData, CreditData newCreditData) {
+    public RequestCustomerCreditData(CustomerId customerId, CreditData initialCreditData, CreditData newCreditData) {
         this.customerId = customerId;
-        this.intialCreditData = intialCreditData;
+        this.initialCreditData = initialCreditData;
         this.newCreditData = newCreditData;
     }
 
@@ -19,12 +19,12 @@ public class RequestCustomerCreditData {
         this.customerId = customerId;
     }
 
-    public CreditData getIntialCreditData() {
-        return intialCreditData;
+    public CreditData getInitialCreditData() {
+        return initialCreditData;
     }
 
-    public void setIntialCreditData(CreditData intialCreditData) {
-        this.intialCreditData = intialCreditData;
+    public void setInitialCreditData(CreditData initialCreditData) {
+        this.initialCreditData = initialCreditData;
     }
 
     public CreditData getNewCreditData() {

@@ -14,7 +14,7 @@ public class CSVImportController {
         this.threadHandler = threadHandler;
     }
 
-    @GetMapping("/startImport")
+    @GetMapping("/api")
     public ResponseEntity<String> startImport() {
         threadHandler.run();
         return ResponseEntity.ok("Import finished");
