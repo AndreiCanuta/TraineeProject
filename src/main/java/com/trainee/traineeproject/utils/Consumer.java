@@ -2,18 +2,21 @@ package com.trainee.traineeproject.utils;
 
 import com.trainee.traineeproject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.BlockingQueue;
 
 import static com.trainee.traineeproject.utils.CsvParser.lineToCustomer;
 
+@Component
 public class Consumer implements Runnable {
     private final BlockingQueue<String> blockingQueue;
-    @Autowired
+    final
     CustomerRepository customerRepository;
 
-    public Consumer(BlockingQueue<String> blockingQueue) {
+    public Consumer(BlockingQueue<String> blockingQueue, CustomerRepository customerRepository) {
         this.blockingQueue = blockingQueue;
+        this.customerRepository = customerRepository;
     }
 
     @Override
