@@ -1,0 +1,25 @@
+version: '3'
+services:
+  elasticsearch:
+    container_name: mrc-es
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.8.0-arm64'
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    environment:
+      - discovery.type=single-node
+      - cluster.name=creditlimit
+      - xpack.security.enabled=false
+  postgres:
+    container_name: mrc-pg
+    image: 'postgres:13.3'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
