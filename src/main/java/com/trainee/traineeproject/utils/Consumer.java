@@ -1,7 +1,6 @@
 package com.trainee.traineeproject.utils;
 
 import com.trainee.traineeproject.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.BlockingQueue;

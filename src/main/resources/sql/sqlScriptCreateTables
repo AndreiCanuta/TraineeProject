@@ -1,0 +1,45 @@
+create table customer (
+	id int primary key,
+	curent_credit_data int,
+	store_number varchar(50) not null,
+	customer_number varchar(50) not null,
+	name varchar(50) not null,
+	vat varchar(50) not null,
+	checkout_check_code varchar(50),
+	customer_type varchar(50) not null,
+	registration_date varchar(50) not null,
+	CONSTRAINT fk_customer FOREIGN KEY(curent_credit_data)
+		REFERENCES credit_data(id)
+);
+
+create table credit_data (
+	id int primary key,
+	credit_limit int not null,
+	product varchar(50) not null,
+	credit_period int not null,
+	type varchar(50) not null
+);
+
+
+create table request (
+	id int primary key,
+	customer_id int not null,
+	status varchar(50) not null,
+	request_data varchar(50) not null,
+	CONSTRAINT fk_customer FOREIGN KEY(customer_id)
+		REFERENCES customer(id)
+);
+
+
+create table request_credit_data (
+	id int primary key,
+	request_id int not null,
+	customer_id int not null,
+	credit_data_id int not null,
+	CONSTRAINT fk_request FOREIGN KEY(request_id)
+		REFERENCES request(id),
+	CONSTRAINT fk_customer FOREIGN KEY(customer_id)
+		REFERENCES customer(id),
+	CONSTRAINT fk_credit_data FOREIGN KEY(credit_data_id)
+		REFERENCES credit_data(id)
+);
