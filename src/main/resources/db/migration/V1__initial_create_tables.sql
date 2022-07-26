@@ -1,23 +1,28 @@
+CREATE SCHEMA traineeproject;
+
+SET search_path = traineeproject, pg_catalog;
+
+
+create table credit_data (
+    id int primary key,
+    credit_limit int not null,
+    product varchar(50) not null,
+    credit_period int not null,
+    type varchar(50) not null
+);
+
 create table customer (
 	id int primary key,
-	curent_credit_data int,
+	current_credit_data int,
 	store_number varchar(50) not null,
 	customer_number varchar(50) not null,
-	name varchar(50) not null,
+	name varchar(250) not null,
 	vat varchar(50) not null,
 	checkout_check_code varchar(50),
 	customer_type varchar(50) not null,
 	registration_date varchar(50) not null,
-	CONSTRAINT fk_customer FOREIGN KEY(curent_credit_data)
+	CONSTRAINT fk_customer FOREIGN KEY(current_credit_data)
 		REFERENCES credit_data(id)
-);
-
-create table credit_data (
-	id int primary key,
-	credit_limit int not null,
-	product varchar(50) not null,
-	credit_period int not null,
-	type varchar(50) not null
 );
 
 
