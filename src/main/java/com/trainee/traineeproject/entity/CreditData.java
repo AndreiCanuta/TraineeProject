@@ -1,17 +1,27 @@
 package com.trainee.traineeproject.entity;
 
 public class CreditData {
+    private Integer id;
     private Integer limit;
     private Product product;
-    private int credit_period;
+    private Integer credit_period;
 
-    public CreditData(Integer limit, Product product, int period) {
+    public CreditData(Integer id, Integer limit, Product product, Integer credit_period) {
+        this.id = id;
         this.limit = limit;
         this.product = product;
-        this.credit_period = period;
+        this.credit_period = credit_period;
     }
 
-    public double getLimit() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getLimit() {
         return limit;
     }
 
@@ -27,12 +37,12 @@ public class CreditData {
         this.product = product;
     }
 
-    public int getPeriod() {
+    public Integer getCredit_period() {
         return credit_period;
     }
 
-    public void setPeriod(int period) {
-        this.credit_period = period;
+    public void setCredit_period(Integer credit_period) {
+        this.credit_period = credit_period;
     }
 
     @Override
@@ -40,7 +50,7 @@ public class CreditData {
         return "CreditData{" +
                 "limit=" + limit +
                 ", product=" + product +
-                ", period=" + credit_period +
+                ", credit_period=" + credit_period +
                 '}';
     }
 }

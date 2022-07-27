@@ -5,16 +5,14 @@ import java.util.Collection;
 
 public class Request {
     private String id;
-    private CustomerId requestedCustomerId;
-    private Collection<RequestCustomerCreditData> requestedGroupCreditData;
+    private Integer customerId;
+    private Collection<RequestCreditData> requestedGroupCreditData;
     private RequestStatus status;
     private LocalDateTime createdAt;
 
-    public Request(String id, CustomerId requestedCustomerId,
-                   Collection<RequestCustomerCreditData> requestedGroupCreditData,
-                   RequestStatus status, LocalDateTime createdAt) {
+    public Request(String id, Integer customerId, Collection<RequestCreditData> requestedGroupCreditData, RequestStatus status, LocalDateTime createdAt) {
         this.id = id;
-        this.requestedCustomerId = requestedCustomerId;
+        this.customerId = customerId;
         this.requestedGroupCreditData = requestedGroupCreditData;
         this.status = status;
         this.createdAt = createdAt;
@@ -28,19 +26,19 @@ public class Request {
         this.id = id;
     }
 
-    public CustomerId getRequestedCustomerId() {
-        return requestedCustomerId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setRequestedCustomerId(CustomerId requestedCustomerId) {
-        this.requestedCustomerId = requestedCustomerId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public Collection<RequestCustomerCreditData> getRequestedGroupCreditData() {
+    public Collection<RequestCreditData> getRequestedGroupCreditData() {
         return requestedGroupCreditData;
     }
 
-    public void setRequestedGroupCreditData(Collection<RequestCustomerCreditData> requestedGroupCreditData) {
+    public void setRequestedGroupCreditData(Collection<RequestCreditData> requestedGroupCreditData) {
         this.requestedGroupCreditData = requestedGroupCreditData;
     }
 
@@ -59,4 +57,16 @@ public class Request {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id='" + id + '\'' +
+                ", customerId=" + customerId +
+                ", requestedGroupCreditData=" + requestedGroupCreditData +
+                ", status=" + status +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }
+

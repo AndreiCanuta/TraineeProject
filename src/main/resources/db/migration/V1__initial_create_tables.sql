@@ -36,7 +36,6 @@ create table request (
 		REFERENCES customer(id)
 );
 
-
 create table request_credit_data (
 	id int primary key,
 	request_id int not null,

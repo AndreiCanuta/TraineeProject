@@ -3,7 +3,10 @@ package com.trainee.traineeproject.entity;
 import java.time.LocalDate;
 
 public class Customer {
-    private CustomerId customerId;
+    private Integer id;
+    private String storeNumber;
+    private String customerNumber;
+    private String country;
     private String name;
     private String VAT;
     private String CheckoutCheckCode;
@@ -11,10 +14,12 @@ public class Customer {
     private CustomerType customerType;
     private LocalDate registrationDate;
 
-    public Customer(CustomerId customerId, String name, String VAT,
-                    String checkoutCheckCode, CreditData currentCreditData,
-                    CustomerType customerType, LocalDate registrationDate) {
-        this.customerId = customerId;
+
+    public Customer(Integer id, String storeNumber, String customerNumber, String country, String name, String VAT, String checkoutCheckCode, CreditData currentCreditData, CustomerType customerType, LocalDate registrationDate) {
+        this.id = id;
+        this.storeNumber = storeNumber;
+        this.customerNumber = customerNumber;
+        this.country = country;
         this.name = name;
         this.VAT = VAT;
         CheckoutCheckCode = checkoutCheckCode;
@@ -23,12 +28,36 @@ public class Customer {
         this.registrationDate = registrationDate;
     }
 
-    public CustomerId getCustomerId() {
-        return customerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCustomerId(CustomerId customerId) {
-        this.customerId = customerId;
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getStoreNumber() {
+        return storeNumber;
+    }
+
+    public void setStoreNumber(String storeNumber) {
+        this.storeNumber = storeNumber;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getName() {
@@ -67,10 +96,26 @@ public class Customer {
         return customerType;
     }
 
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId=" + customerId +
+                "id=" + id +
+                ", storeNumber='" + storeNumber + '\'' +
+                ", customerNumber='" + customerNumber + '\'' +
+                ", country='" + country + '\'' +
                 ", name='" + name + '\'' +
                 ", VAT='" + VAT + '\'' +
                 ", CheckoutCheckCode='" + CheckoutCheckCode + '\'' +
