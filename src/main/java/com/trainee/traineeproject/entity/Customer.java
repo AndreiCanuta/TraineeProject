@@ -14,9 +14,9 @@ public class Customer {
     private String name;
     private String VAT;
     private String CheckoutCheckCode;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "current_credit_data")
-    private CreditData currentCreditData;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "current_credit_data")
+//    private CreditData currentCreditData;
     private CustomerType customerType;
     private LocalDate registrationDate;
 
@@ -28,7 +28,7 @@ public class Customer {
         this.name = name;
         this.VAT = VAT;
         CheckoutCheckCode = checkoutCheckCode;
-        this.currentCreditData = currentCreditData;
+//        this.currentCreditData = currentCreditData;
         this.customerType = customerType;
         this.registrationDate = registrationDate;
     }
@@ -93,13 +93,13 @@ public class Customer {
         CheckoutCheckCode = checkoutCheckCode;
     }
 
-    public CreditData getCurrentCreditData() {
-        return currentCreditData;
-    }
-
-    public void setCurrentCreditData(CreditData currentCreditData) {
-        this.currentCreditData = currentCreditData;
-    }
+//    public CreditData getCurrentCreditData() {
+//        return currentCreditData;
+//    }
+//
+//    public void setCurrentCreditData(CreditData currentCreditData) {
+//        this.currentCreditData = currentCreditData;
+//    }
 
     public CustomerType getCustomerType() {
         return customerType;
@@ -128,7 +128,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", VAT='" + VAT + '\'' +
                 ", CheckoutCheckCode='" + CheckoutCheckCode + '\'' +
-                ", currentCreditData=" + currentCreditData +
+                ", currentCreditData="  +
                 ", customerType=" + customerType +
                 ", registrationDate=" + registrationDate +
                 '}';

@@ -3,28 +3,24 @@ package com.trainee.traineeproject.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "credit_data")
 public class CreditData {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    private Integer limit;
+    private Integer credit_limit;
     @Enumerated(EnumType.STRING)
     private Product product;
     private Integer credit_period;
-
     private String type;
 
-    public CreditData(Integer limit, Product product, Integer credit_period, String type) {
-        this.limit = limit;
+    public CreditData(Integer credit_limit, Product product, Integer credit_period, String type) {
+        this.credit_limit = credit_limit;
         this.product = product;
         this.credit_period = credit_period;
         this.type = type;
     }
 
     public CreditData() {
-
-
     }
 
     public Integer getId() {
@@ -35,12 +31,12 @@ public class CreditData {
         this.id = id;
     }
 
-    public Integer getLimit() {
-        return limit;
+    public Integer getCredit_limit() {
+        return credit_limit;
     }
 
-    public void setLimit(Integer limit) {
-        this.limit = limit;
+    public void setCredit_limit(Integer limit) {
+        this.credit_limit = limit;
     }
 
     public Product getProduct() {
@@ -70,7 +66,7 @@ public class CreditData {
     @Override
     public String toString() {
         return "CreditData{" +
-                "limit=" + limit +
+                "limit=" + credit_limit +
                 ", product=" + product +
                 ", credit_period=" + credit_period +
                 '}';

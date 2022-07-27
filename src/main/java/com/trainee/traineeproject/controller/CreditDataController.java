@@ -4,7 +4,6 @@ import com.trainee.traineeproject.entity.CreditData;
 import com.trainee.traineeproject.entity.Customer;
 import com.trainee.traineeproject.entity.Product;
 import com.trainee.traineeproject.repository.CreditDataRepository;
-import com.trainee.traineeproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

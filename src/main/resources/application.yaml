@@ -2,8 +2,9 @@ spring:
   jpa:
     properties:
       hibernate:
+        default_schema: traineeproject
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto: none
+        ddl-auto: create-drop
         show-sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
