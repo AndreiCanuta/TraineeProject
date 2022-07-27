@@ -1,16 +1,30 @@
 package com.trainee.traineeproject.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "credit_data")
 public class CreditData {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer limit;
+    @Enumerated(EnumType.STRING)
     private Product product;
     private Integer credit_period;
 
-    public CreditData(Integer id, Integer limit, Product product, Integer credit_period) {
-        this.id = id;
+    private String type;
+
+    public CreditData(Integer limit, Product product, Integer credit_period, String type) {
         this.limit = limit;
         this.product = product;
         this.credit_period = credit_period;
+        this.type = type;
+    }
+
+    public CreditData() {
+
+
     }
 
     public Integer getId() {
@@ -43,6 +57,14 @@ public class CreditData {
 
     public void setCredit_period(Integer credit_period) {
         this.credit_period = credit_period;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

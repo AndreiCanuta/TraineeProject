@@ -17,6 +17,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
+
     @GetMapping()
     public ResponseEntity<List<Customer>> getAllCustomers () {
         return ResponseEntity.ok(customerService.getAllCustomers());

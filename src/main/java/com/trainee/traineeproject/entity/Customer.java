@@ -1,8 +1,12 @@
 package com.trainee.traineeproject.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "customer")
 public class Customer {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String storeNumber;
     private String customerNumber;
@@ -10,13 +14,14 @@ public class Customer {
     private String name;
     private String VAT;
     private String CheckoutCheckCode;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "current_credit_data")
     private CreditData currentCreditData;
     private CustomerType customerType;
     private LocalDate registrationDate;
 
 
-    public Customer(Integer id, String storeNumber, String customerNumber, String country, String name, String VAT, String checkoutCheckCode, CreditData currentCreditData, CustomerType customerType, LocalDate registrationDate) {
-        this.id = id;
+    public Customer(String storeNumber, String customerNumber, String country, String name, String VAT, String checkoutCheckCode, CreditData currentCreditData, CustomerType customerType, LocalDate registrationDate) {
         this.storeNumber = storeNumber;
         this.customerNumber = customerNumber;
         this.country = country;
@@ -26,6 +31,10 @@ public class Customer {
         this.currentCreditData = currentCreditData;
         this.customerType = customerType;
         this.registrationDate = registrationDate;
+    }
+
+    public Customer() {
+
     }
 
     public Integer getId() {
