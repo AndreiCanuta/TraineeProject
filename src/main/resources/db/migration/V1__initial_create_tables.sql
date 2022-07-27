@@ -16,11 +16,12 @@ create table customer (
 	current_credit_data int,
 	store_number varchar(50) not null,
 	customer_number varchar(50) not null,
+	country varchar(50) not null,
 	name varchar(250) not null,
 	vat varchar(50) not null,
 	checkout_check_code varchar(50),
 	customer_type varchar(50) not null,
-	registration_date varchar(50) not null,
+	registration_date date not null,
 	CONSTRAINT fk_customer FOREIGN KEY(current_credit_data)
 		REFERENCES credit_data(id)
 );
@@ -30,7 +31,7 @@ create table request (
 	id int primary key,
 	customer_id int not null,
 	status varchar(50) not null,
-	request_data varchar(50) not null,
+	request_data timestamp without time zone not null,
 	CONSTRAINT fk_customer FOREIGN KEY(customer_id)
 		REFERENCES customer(id)
 );
