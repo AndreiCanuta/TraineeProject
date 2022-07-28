@@ -2,7 +2,7 @@ CREATE SCHEMA traineeproject;
 
 SET search_path = traineeproject, pg_catalog;
 
-create sequence traineeproject.hibernate_sequence start with 1 increment by 1
+create sequence traineeproject.hibernate_sequence start with 1 increment by 1;
 
 create table credit_data (
     id int primary key,

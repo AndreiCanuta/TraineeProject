@@ -6,7 +6,7 @@ import java.time.LocalDate;
 @Table(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Integer id;
     private String storeNumber;
     private String customerNumber;
@@ -17,6 +17,7 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "current_credit_data")
     private CreditData currentCreditData;
+    @Enumerated(EnumType.STRING)
     private CustomerType customerType;
     private LocalDate registrationDate;
 
