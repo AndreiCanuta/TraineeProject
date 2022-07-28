@@ -36,6 +36,7 @@ public class Customer {
         this.registrationDate = registrationDate;
     }
 
+
     public Customer() {
     }
 
