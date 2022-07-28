@@ -11,9 +11,10 @@ public class CreditData {
     @Enumerated(EnumType.STRING)
     private Product product;
     private Integer credit_period;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private CreditDataType type;
 
-    public CreditData(Integer credit_limit, Product product, Integer credit_period, String type) {
+    public CreditData(Integer credit_limit, Product product, Integer credit_period, CreditDataType type) {
         this.credit_limit = credit_limit;
         this.product = product;
         this.credit_period = credit_period;
@@ -55,11 +56,11 @@ public class CreditData {
         this.credit_period = credit_period;
     }
 
-    public String getType() {
+    public CreditDataType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(CreditDataType type) {
         this.type = type;
     }
 

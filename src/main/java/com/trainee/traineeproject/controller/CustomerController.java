@@ -1,9 +1,6 @@
 package com.trainee.traineeproject.controller;
 
-import com.trainee.traineeproject.entity.CreditData;
-import com.trainee.traineeproject.entity.Customer;
-import com.trainee.traineeproject.entity.CustomerType;
-import com.trainee.traineeproject.entity.Product;
+import com.trainee.traineeproject.entity.*;
 import com.trainee.traineeproject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +20,7 @@ public class CustomerController {
 
     @GetMapping("/add")
     public void addCreditData() {
-        CreditData creditData = new CreditData(1000, Product.BANK_TRANSFER , 15, "current");
+        CreditData creditData = new CreditData(1000, Product.BANK_TRANSFER , 15, CreditDataType.CURRENT);
         Customer customer = new Customer("1", "1", "1", "1", "1", "1", creditData, CustomerType.HORECA, LocalDate.now());
         customerRepository.save(customer);
     }

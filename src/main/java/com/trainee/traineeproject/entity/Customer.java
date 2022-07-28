@@ -8,6 +8,7 @@ import java.util.UUID;
 @Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue
     private UUID id;
     private String storeNumber;
     private String customerNumber;
