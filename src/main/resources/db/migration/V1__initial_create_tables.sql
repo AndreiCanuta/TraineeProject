@@ -1,4 +1,5 @@
 CREATE SCHEMA traineeproject;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 SET search_path = traineeproject, pg_catalog;
 
@@ -13,7 +14,7 @@ create table credit_data (
 );
 
 create table customer (
-	id int primary key,
+    id uuid DEFAULT public.uuid_generate_v4 (),
 	current_credit_data int,
 	store_number varchar(50) not null,
 	customer_number varchar(50) not null,
@@ -23,6 +24,7 @@ create table customer (
 	checkout_check_code varchar(50),
 	customer_type varchar(50) not null,
 	registration_date date not null,
+    primary key (id),
 	CONSTRAINT fk_customer FOREIGN KEY(current_credit_data)
 		REFERENCES credit_data(id)
 );
@@ -30,7 +32,7 @@ create table customer (
 
 create table request (
 	id int primary key,
-	customer_id int not null,
+	customer_id uuid not null,
 	status varchar(50) not null,
 	request_data timestamp without time zone not null,
 	CONSTRAINT fk_customer FOREIGN KEY(customer_id)
@@ -40,7 +42,7 @@ create table request (
 create table request_credit_data (
 	id int primary key,
 	request_id int not null,
-	customer_id int not null,
+	customer_id uuid not null,
 	credit_data_id int not null,
 	CONSTRAINT fk_request FOREIGN KEY(request_id)
 		REFERENCES request(id),

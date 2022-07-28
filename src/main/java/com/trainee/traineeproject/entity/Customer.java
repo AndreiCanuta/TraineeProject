@@ -2,12 +2,13 @@ package com.trainee.traineeproject.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
+
 @Entity
 @Table(name = "customer")
 public class Customer {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private Integer id;
+    private UUID id;
     private String storeNumber;
     private String customerNumber;
     private String country;
@@ -37,11 +38,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
