@@ -1,12 +1,14 @@
 package com.trainee.traineeproject.entity;
 
 import lombok.Builder;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Builder
+@Component
 public class CustomerDTO {
 
     private String storeNumber;
