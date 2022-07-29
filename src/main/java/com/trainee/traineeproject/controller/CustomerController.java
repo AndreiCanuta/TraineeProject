@@ -22,17 +22,12 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping("/add")
-    public ResponseEntity<?> addCustomer() {
-        return new ResponseEntity<>(customerService.addCustomer(), HttpStatus.OK);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> getUser(@PathVariable UUID id) {
         return new ResponseEntity<>(customerService.getCustomer(id), HttpStatus.OK);
     }
 
-    @GetMapping("/all/{id}")
+    @GetMapping("/all")
     public ResponseEntity<?> getAllUsers() {
         return new ResponseEntity<>(customerService.getAllCustomers(), HttpStatus.OK);
     }

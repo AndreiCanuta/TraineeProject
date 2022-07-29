@@ -21,18 +21,6 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
-//    @Transactional
-//    public List<Customer> getAllCustomers () {
-//        return customerRepository.getAllCustomers();
-//    }
-
-    public UUID addCustomer(){
-        CreditData creditData = new CreditData(1000, Product.BANK_TRANSFER , 15, CreditDataType.CURRENT);
-        Customer customer = new Customer("1", "1", "1", "1", "1", "1", creditData, CustomerType.HORECA, LocalDate.now());
-        return customerRepository.save(customer).getId();
-    }
-
-
     @Transactional
     public CustomerDTO getCustomer(UUID id){
         Customer customer = customerRepository.findById(id);
