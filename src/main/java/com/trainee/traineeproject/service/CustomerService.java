@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerService {
@@ -46,21 +47,18 @@ public class CustomerService {
 
     @Transactional
     public List<CustomerDTO> getAllCustomers(){
-        Iterable<Customer> customers = customerRepository.findAll();
-        List<Customer> custs = new ArrayList<>();
-        customers.forEach(custs::add);
-        List<CustomerDTO> customerDTOS = new ArrayList<>();
+        Iterable<Customer> customerIterable = customerRepository.findAll();
+        List<Customer> customers = new ArrayList<>();
+        customerIterable.forEach(customers::add);
 
-        for (var customer: custs){
-            customerDTOS.add(CustomerDTO.builder()
-                    .storeNumber(customer.getStoreNumber())
-                    .country(customer.getCountry())
-                    .name(customer.getName())
-                    .VAT(customer.getVAT())
-                    .CheckoutCheckCode((customer.getCheckoutCheckCode()))
-                    .build());
-
-        }
-        return customerDTOS;
+        return customers.stream()
+                .map(c -> CustomerDTO.builder()
+                        .storeNumber(c.getStoreNumber())
+                        .country(c.getCountry())
+                        .name(c.getName())
+                        .VAT(c.getVAT())
+                        .CheckoutCheckCode((c.getCheckoutCheckCode()))
+                        .build())
+                .collect(Collectors.toList());
     }
 }
