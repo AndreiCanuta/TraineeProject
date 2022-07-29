@@ -16,13 +16,11 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    CustomerRepository customerRepository;
+    CustomerDTO customerDTO;
 
     @GetMapping("/add")
     public void addCreditData() {
-        CreditData creditData = new CreditData(1000, Product.BANK_TRANSFER , 15, CreditDataType.CURRENT);
-        Customer customer = new Customer("1", "1", "1", "1", "1", "1", creditData, CustomerType.HORECA, LocalDate.now());
-        customerRepository.save(customer);
+
     }
 
 
