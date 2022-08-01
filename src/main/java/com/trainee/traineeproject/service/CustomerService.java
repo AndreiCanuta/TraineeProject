@@ -59,4 +59,17 @@ public class CustomerService {
             throw new Exception("id not found");
         }
     }
+
+    @Transactional
+    public void updateStoreNumber(UUID id, String newStoreNumber ) throws Exception {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer does not exist"));
+        customer.setStoreNumber(newStoreNumber);
+        customerRepository.save(customer);
+    }
+
+    @Transactional
+    public Customer addCustomer(Customer customer) {
+        return customerRepository.save(customer);
+    }
 }

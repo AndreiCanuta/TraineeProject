@@ -1,4 +1,5 @@
 package com.trainee.traineeproject.controller;
+import com.trainee.traineeproject.entity.Customer;
 import com.trainee.traineeproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,5 +33,25 @@ public class CustomerController {
        } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
        }
+    }
+
+    @RequestMapping(path = "/{id}/{newStoreNumber}/updateStoreNumber", method=RequestMethod.GET)
+    public ResponseEntity<?> updateCustomerStoreNumber(@PathVariable("id") UUID id,
+                                            @PathVariable("newStoreNumber") String newStoreNumber) {
+        try {
+            customerService.updateStoreNumber(id, newStoreNumber);
+            return new ResponseEntity<>("Customer updated", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_MODIFIED);
+        }
+    }
+
+    @RequestMapping(path = "/add", method=RequestMethod.GET)
+    public ResponseEntity<?> addCustomer(@RequestBody Customer customer) {
+        try {
+            return new ResponseEntity<>(customerService.addCustomer(customer).toString(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 }
