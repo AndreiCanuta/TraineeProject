@@ -1,18 +1,10 @@
 package com.trainee.traineeproject.controller;
-
-import com.trainee.traineeproject.entity.*;
-import com.trainee.traineeproject.repository.CustomerRepository;
 import com.trainee.traineeproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -32,4 +24,13 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.getAllCustomers(), HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/{id}/delete", method={RequestMethod.DELETE, RequestMethod.GET})
+    public ResponseEntity<?> deleteById(@PathVariable("id") UUID id) {
+       try {
+            customerService.deleteById(id);
+            return new ResponseEntity<>("Customer deleted", HttpStatus.OK);
+       } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+       }
+    }
 }

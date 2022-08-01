@@ -23,7 +23,8 @@ public class CustomerService {
 
     @Transactional
     public CustomerDTO getCustomer(UUID id){
-        Customer customer = customerRepository.findById(id);
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer does not exist"));
         return CustomerDTO.builder()
                 .storeNumber(customer.getStoreNumber())
                 .country(customer.getCountry())
@@ -48,5 +49,14 @@ public class CustomerService {
                         .CheckoutCheckCode((c.getCheckoutCheckCode()))
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void deleteById(UUID id) throws Exception {
+        if(customerRepository.existsById(id)) {
+            customerRepository.deleteById(id);
+        } else {
+            throw new Exception("id not found");
+        }
     }
 }
