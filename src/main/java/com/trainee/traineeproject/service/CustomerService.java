@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -81,5 +78,26 @@ public class CustomerService {
         Pageable paging = PageRequest.of(pageNo, pageSize);
         Page<Customer> pagedResult = customerRepository.findAll(paging);
         return pagedResult.toList();
+    }
+
+    @Transactional
+    public Customer updateCustomer(UUID id, CustomerDTO customerDTO) {
+
+        if (customerRepository.findById(id).isPresent()){
+            Customer existingCustomer = customerRepository.findById(id).get();
+
+            existingCustomer.setCustomerNumber(customerDTO.getStoreNumber());
+            existingCustomer.setCustomerType(customerDTO.getCustomerType());
+            existingCustomer.setCountry(customerDTO.getCountry());
+            existingCustomer.setName(customerDTO.getName());
+            existingCustomer.setCheckoutCheckCode(customerDTO.getCheckoutCheckCode());
+            existingCustomer.setCurrentCreditData(customerDTO.getCurrentCreditData());
+            existingCustomer.setVAT(customerDTO.getVAT());
+
+            Customer updatedCustomer = customerRepository.save(existingCustomer);
+            return updatedCustomer;
+        }else{
+            return null;
+        }
     }
 }
