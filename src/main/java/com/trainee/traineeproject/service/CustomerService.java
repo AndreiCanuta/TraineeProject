@@ -81,4 +81,25 @@ public class CustomerService {
         Page<Customer> pagedResult = customerRepository.findAll(paging);
         return pagedResult.toList();
     }
+
+    @Transactional
+    public Customer updateCustomer(UUID id, CustomerDTO customerDTO) {
+
+        if (customerRepository.findById(id).isPresent()){
+            Customer existingCustomer = customerRepository.findById(id).get();
+
+            existingCustomer.setCustomerNumber(customerDTO.getStoreNumber());
+            existingCustomer.setCustomerType(customerDTO.getCustomerType());
+            existingCustomer.setCountry(customerDTO.getCountry());
+            existingCustomer.setName(customerDTO.getName());
+            existingCustomer.setCheckoutCheckCode(customerDTO.getCheckoutCheckCode());
+            existingCustomer.setCurrentCreditData(customerDTO.getCurrentCreditData());
+            existingCustomer.setVAT(customerDTO.getVAT());
+
+            Customer updatedCustomer = customerRepository.save(existingCustomer);
+            return updatedCustomer;
+        }else{
+            return null;
+        }
+    }
 }

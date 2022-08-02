@@ -1,8 +1,10 @@
 package com.trainee.traineeproject.controller;
 import com.trainee.traineeproject.entity.Customer;
+import com.trainee.traineeproject.entity.CustomerDTO;
 import com.trainee.traineeproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +28,7 @@ public class CustomerController {
         return new ResponseEntity<>(customerService.getAllCustomers(), HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{id}/delete", method={RequestMethod.DELETE, RequestMethod.GET})
+    @RequestMapping(path = "/{id}/delete", method=RequestMethod.DELETE)
     public ResponseEntity<?> deleteById(@PathVariable("id") UUID id) {
        try {
             customerService.deleteById(id);
@@ -36,7 +38,7 @@ public class CustomerController {
        }
     }
 
-    @RequestMapping(path = "/{id}/{newStoreNumber}/updateStoreNumber", method=RequestMethod.GET)
+    @RequestMapping(path = "/{id}/{newStoreNumber}/updateStoreNumber", method=RequestMethod.PATCH)
     public ResponseEntity<?> updateCustomerStoreNumber(@PathVariable("id") UUID id,
                                             @PathVariable("newStoreNumber") String newStoreNumber) {
         try {
@@ -47,7 +49,7 @@ public class CustomerController {
         }
     }
 
-    @RequestMapping(path = "/add", method=RequestMethod.GET)
+    @RequestMapping(path = "/add", method=RequestMethod.PUT)
     public ResponseEntity<?> addCustomer(@RequestBody Customer customer) {
         try {
             return new ResponseEntity<>(customerService.addCustomer(customer).toString(), HttpStatus.OK);
@@ -62,5 +64,12 @@ public class CustomerController {
 
         List<Customer> paginatedCustomers = customerService.findPaginated(pageNo, pageSize);
         return paginatedCustomers;
+    }
+
+    @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") UUID id,
+                                                     @RequestBody CustomerDTO customerDTO){
+        return new ResponseEntity<>(customerService.updateCustomer(id, customerDTO), HttpStatus.OK);
     }
 }
