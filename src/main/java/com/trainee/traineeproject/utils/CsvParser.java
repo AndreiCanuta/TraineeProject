@@ -4,7 +4,7 @@ import com.trainee.traineeproject.entity.*;
 
 import java.time.LocalDate;
 
-public class CsvParser {
+public class CsvParser<T>{
 
     public static Customer lineToCustomer (String line) {
         String[] split = line.split(",");

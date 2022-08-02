@@ -21,13 +21,9 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
 //        System.out.println(Thread.currentThread().getId() + " Start time " + System.currentTimeMillis());
-        while (true) {
+        while (!blockingQueue.peek().equals("EOF")) {
             try {
                 String line = blockingQueue.take();
-                if(line.equals("EOF")) {
-//                    System.out.println(Thread.currentThread().getId() + " End time " + System.currentTimeMillis());
-                    break;
-                }
                 customerRepository.save(lineToCustomer(line));
 //                sleep(1);
 

@@ -22,9 +22,7 @@ public class Producer implements Runnable{
                 blockingQueue.put(line);
             }
 
-            for (int i = 0; i < 3; i++) {
-                blockingQueue.put("EOF");
-            }
+            blockingQueue.put("EOF");
 
         } catch (IOException e) {
             System.out.println("Problem reading the log file!");
