@@ -1,6 +1,7 @@
 package com.trainee.traineeproject.service;
 
 import com.trainee.traineeproject.entity.*;
+import com.trainee.traineeproject.entity.dto.CustomerDTO;
 import com.trainee.traineeproject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,10 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -49,6 +47,7 @@ public class CustomerService {
                         .country(c.getCountry())
                         .name(c.getName())
                         .VAT(c.getVAT())
+                        .currentCreditData(c.getCurrentCreditData())
                         .CheckoutCheckCode((c.getCheckoutCheckCode()))
                         .build())
                 .collect(Collectors.toList());

@@ -7,17 +7,17 @@ public class CreditData {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    private Integer credit_limit;
+    private Integer creditLimit;
     @Enumerated(EnumType.STRING)
     private Product product;
-    private Integer credit_period;
+    private Integer creditPeriod;
     @Enumerated(EnumType.STRING)
     private CreditDataType type;
 
-    public CreditData(Integer credit_limit, Product product, Integer credit_period, CreditDataType type) {
-        this.credit_limit = credit_limit;
+    public CreditData(Integer creditLimit, Product product, Integer creditPeriod, CreditDataType type) {
+        this.creditLimit = creditLimit;
         this.product = product;
-        this.credit_period = credit_period;
+        this.creditPeriod = creditPeriod;
         this.type = type;
     }
 
@@ -32,12 +32,12 @@ public class CreditData {
         this.id = id;
     }
 
-    public Integer getCredit_limit() {
-        return credit_limit;
+    public Integer getCreditLimit() {
+        return creditLimit;
     }
 
-    public void setCredit_limit(Integer limit) {
-        this.credit_limit = limit;
+    public void setCreditLimit(Integer limit) {
+        this.creditLimit = limit;
     }
 
     public Product getProduct() {
@@ -48,12 +48,12 @@ public class CreditData {
         this.product = product;
     }
 
-    public Integer getCredit_period() {
-        return credit_period;
+    public Integer getCreditPeriod() {
+        return creditPeriod;
     }
 
-    public void setCredit_period(Integer credit_period) {
-        this.credit_period = credit_period;
+    public void setCreditPeriod(Integer creditPeriod) {
+        this.creditPeriod = creditPeriod;
     }
 
     public CreditDataType getType() {
@@ -67,9 +67,9 @@ public class CreditData {
     @Override
     public String toString() {
         return "CreditData{" +
-                "limit=" + credit_limit +
+                "limit=" + creditLimit +
                 ", product=" + product +
-                ", credit_period=" + credit_period +
+                ", credit_period=" + creditPeriod +
                 '}';
     }
 }

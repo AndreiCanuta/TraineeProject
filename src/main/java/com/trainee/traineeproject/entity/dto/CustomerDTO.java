@@ -1,5 +1,7 @@
-package com.trainee.traineeproject.entity;
+package com.trainee.traineeproject.entity.dto;
 
+import com.trainee.traineeproject.entity.CreditData;
+import com.trainee.traineeproject.entity.CustomerType;
 import lombok.Builder;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +18,6 @@ public class CustomerDTO {
     private String name;
     private String VAT;
     private String CheckoutCheckCode;
-
     private CreditData currentCreditData;
     private CustomerType customerType;
 
