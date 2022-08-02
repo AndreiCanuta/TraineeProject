@@ -1,6 +1,6 @@
 package com.trainee.traineeproject.controller;
 import com.trainee.traineeproject.entity.Customer;
-import com.trainee.traineeproject.entity.CustomerDTO;
+import com.trainee.traineeproject.entity.dto.CustomerDTO;
 import com.trainee.traineeproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
